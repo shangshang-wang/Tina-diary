@@ -103,7 +103,7 @@ def parse_arguments():
     parser.add_argument(
         "--num_cite_rounds",
         type=int,
-        default=20,
+        default=0,
         help="Number of citation rounds to perform",
     )
     parser.add_argument(
@@ -264,11 +264,11 @@ if __name__ == "__main__":
 
     if not args.skip_writeup:
         writeup_success = False
-        citations_text = gather_citations(
-            idea_dir,
-            num_cite_rounds=args.num_cite_rounds,
-            small_model=args.model_citation,
-        )
+        # citations_text = gather_citations(
+        #     idea_dir,
+        #     num_cite_rounds=args.num_cite_rounds,
+        #     small_model=args.model_citation,
+        # )
         for attempt in range(args.writeup_retries):
             print(f"Writeup attempt {attempt+1} of {args.writeup_retries}")
             if args.writeup_type == "normal":
@@ -276,14 +276,14 @@ if __name__ == "__main__":
                     base_folder=idea_dir,
                     big_model=args.model_writeup,
                     page_limit=8,
-                    citations_text=citations_text,
+                    # citations_text=citations_text,
                 )
             else:
                 writeup_success = perform_icbinb_writeup(
                     base_folder=idea_dir,
                     big_model=args.model_writeup,
                     page_limit=4,
-                    citations_text=citations_text,
+                    # citations_text=citations_text,
                 )
             if writeup_success:
                 break

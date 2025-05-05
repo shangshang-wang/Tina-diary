@@ -41,6 +41,7 @@ agent:
     stage2_max_iters: 12
     stage3_max_iters: 12
     stage4_max_iters: 18
+
   # how many improvement iterations to run
   steps: 5 # if stage-specific max_iters are not provided, the agent will use this value for all stages
   # whether to instruct the agent to use CV (set to 1 to disable)
@@ -54,7 +55,8 @@ agent:
 
   # LLM settings for coding
   code:
-    model: anthropic.claude-3-5-sonnet-20241022-v2:0
+#    model: anthropic.claude-3-5-sonnet-20241022-v2:0
+    model: o3-mini-2025-01-31
     temp: 1.0
     max_tokens: 12000
 
